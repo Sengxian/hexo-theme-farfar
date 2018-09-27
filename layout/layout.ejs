@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+  <!-- Head tag -->
+  <%- partial('_partial/head') %>
+
+  <body>
+    <div id="body_wrapper">
+      <!-- Header -->
+      <%- partial('_partial/header') %>
+
+      <!-- Main -->
+      <div id="main">
+        <%- body %>
+      </div>
+
+      <!-- Footer -->
+      <%- partial('_partial/footer') %>
+
+      <!-- After footer scripts -->
+      <%- partial('_partial/after-footer') %>
+    </div>
+  </body>
+</html>

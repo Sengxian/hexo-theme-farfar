@@ -1,0 +1,21 @@
+<div id="archive" class="common_width">
+  <%
+    var all_post = [];
+    site.posts.sort('date', 'desc').each(function(post) {
+      all_post.push(post);
+    });
+  %>
+  <% for (var i = 0, j = 1; i < all_post.length; i = j) { %>
+    <% while (j < all_post.length && all_post[j].date.year() == all_post[i].date.year()) ++j; %>
+    <div class="archive_year">
+      <div class="h">
+        <h3><%- all_post[i].date.year() %></h3><span class="count"><%- j - i %> posts</span>
+      </div>
+      <div class="set">
+        <% for (var k = i; k < j; ++k) { %>
+          <div class="mylist"><a href="<%- url_for(all_post[k].path) %>"><%- all_post[k].title %></a><span><%- all_post[k].date.format("MMM DD") %></span></div>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
+</div>

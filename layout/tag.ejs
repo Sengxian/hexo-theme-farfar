@@ -1,0 +1,27 @@
+<%- partial('_partial/article_list', { page: page }) %>
+<div class="clear"></div>
+<% if (page.total > 1) { %>
+  <div class="pager common_width">
+    <ul>
+      <% var base = "/tags/" + page.tag; %>
+      <% for (var i = 1; i <= page.total; ++i) { %>
+        <li>
+          <% if (i == 1) { %>
+            <% if (i == page.current) { %>
+              <a href="javascript:void(0);" class="current">
+            <% } else { %>
+              <a href="<%- base %>/">
+            <% } %>
+          <% } else { %>
+            <% if (i == page.current) { %>
+              <a href="javascript:void(0);" class="current">
+            <% } else { %>
+              <a href="<%- base %>/page/<%- i %>/">
+            <% } %>
+          <% } %>
+          <%- i %>
+        </a></li>
+      <% } %>
+    </ul>
+  </div>
+<% } %>

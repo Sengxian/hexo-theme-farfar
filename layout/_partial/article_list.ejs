@@ -1,0 +1,26 @@
+<div class="posts">
+  <% page.posts.each(function(post, index) { %>
+    <% if (index % 2 == 0) { %>
+      <div class="post_bg post_bg_one">
+    <% } else { %>
+      <div class="post_bg post_bg_two">
+    <% } %>
+        <div class="post post_in_list common_width">
+          <h2><a href="<%- url_for(post.path) %>"><%- post.title %></a></h2>
+          <span class="date"><%- post.date.format(config.date_format) %></span>
+          <div class="post_body">
+            <%
+              var tagReg1 = /<(S*?)[^>]*>.*?/gm, tagReg2 = /<.*? \/>/gm;
+              var content = post.excerpt ? post.excerpt : post.content;
+              //content = content.replace(tagReg1, 'a');
+              //content = content.replace(tagReg2, 'b');
+              content = content.replace(tagReg1, ' ');
+              content = content.replace(tagReg2, ' ');
+            %>
+            <%- content.substring(0, 200) %>......
+          </div>
+          <div class="read_more"><a href="<%- url_for(post.path) %>">Read More</a></div>
+        </div>
+      </div>
+  <% }); %>
+</div>
